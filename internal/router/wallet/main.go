@@ -32,6 +32,7 @@ func Router(r *gin.RouterGroup, repository *repository.Repository) {
 		balance, err := repository.GetBalance(id)
 		if err != nil {
 			c.JSON(403, gin.H{"error": err.Error()})
+			return
 		}
 		c.JSON(200, gin.H{
 			"Balance": balance,

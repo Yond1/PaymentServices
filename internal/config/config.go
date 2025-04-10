@@ -13,7 +13,7 @@ type Config struct {
 }
 
 func GetConfig() *Config {
-	configPath := "../."
+	configPath := "."
 	viper.AddConfigPath(configPath)
 	err := viper.ReadInConfig()
 	if err != nil {

@@ -22,7 +22,7 @@ type Database struct {
 
 type Wallet struct {
 	WalletID uuid.UUID
-	Balance  int64
+	Balance  uint64
 }
 
 type WalletRequest struct {

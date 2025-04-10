@@ -42,7 +42,7 @@ func (r *Repository) GetBalance(id string) (int, error) {
 	return balance, nil
 }
 
-func (r *Repository) ChangeBalance(ctx context.Context, walletId uuid.UUID, amount int64, operationType string) error {
+func (r *Repository) ChangeBalance(ctx context.Context, walletId uuid.UUID, amount uint64, operationType string) error {
 	const maxRetries = 15
 	var lastErr error
 
@@ -66,7 +66,7 @@ func (r *Repository) ChangeBalance(ctx context.Context, walletId uuid.UUID, amou
 			continue
 		}
 
-		var currentBalance int64
+		var currentBalance uint64
 		err = tx.QueryRowContext(ctx,
 			"SELECT balance FROM wallets WHERE wallet_id = $1 FOR UPDATE SKIP LOCKED",
 			walletId,
